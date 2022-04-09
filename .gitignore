@@ -1,1 +1,3 @@
 node_modules/
+
+database/starwars_postgres_create.sql

@@ -15,6 +15,10 @@ if(process.env.NODE_ENV === 'production'){
   })
 }
 
+app.post('/reviews', (req,res) => {
+  return res.status(200)
+})
+
 // 404 handler
 app.use('*', (req, res) => {
   console.log('Error: Client attempted access to unknown route');
