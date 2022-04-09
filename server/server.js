@@ -6,6 +6,10 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// require routers
+const booksRouter = require(path.join(__dirname,'./routes/books'));
+const reviewsRouter = require(path.join(__dirname,'./routes/reviews'));
+
 // app entry for production
 if(process.env.NODE_ENV === 'production'){
   app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -15,9 +19,9 @@ if(process.env.NODE_ENV === 'production'){
   })
 }
 
-app.post('/reviews', (req,res) => {
-  return res.status(200)
-})
+// use routers
+app.use('/books', booksRouter);
+app.use('/reviews', reviewsRouter);
 
 // 404 handler
 app.use('*', (req, res) => {
