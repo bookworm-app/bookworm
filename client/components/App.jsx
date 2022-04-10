@@ -1,5 +1,8 @@
 import React from "react";
-
+import CurrentContainer from './CurrentContainer';
+import FutureContainer from './FutureContainer';
+import PastContainer from './PastContainer';
+//more imports?
 
 // import components 
 
@@ -66,9 +69,14 @@ class App extends Component {
     
     return (
         <div className="mainContainer">
+          <div>
+
+            <h1>BOOKWORM</h1>
+            <h3>@user_1</h3>
+          </div>
             <CurrentContainer current= {current} otherCurrent= {otherCurrent}/>
-            <PastContainer past={past} otherPast={otherPast} />
-            <FutureContainer future= {future} otherFuture= {otherFuture}/>
+            {/* <PastContainer past={past} otherPast={otherPast} />
+            <FutureContainer future= {future} otherFuture= {otherFuture}/> */}
         </div>
     )
           
@@ -76,7 +84,8 @@ class App extends Component {
       
 }
     
-    
+export default App;
+
     //reading_list._id
   // user_id
   // username
