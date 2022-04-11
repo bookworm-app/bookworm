@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import CurrentContainer from './CurrentContainer';
 import FutureContainer from './FutureContainer';
 import PastContainer from './PastContainer';
@@ -8,7 +8,7 @@ import sampleState from './sampleState';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       current: [],
       past: [],
@@ -27,12 +27,12 @@ class App extends Component {
   // .then(res => res.json())
   // .then(data => {
   //   // create output arrays
-  //   const current = [];
-  //   const past = [];
-  //   const future = [];
-  //   const otherCurrent = [];
-  //   const otherPast = [];
-  //   const otherFuture = [];
+    // const current = [];
+    // const past = [];
+    // const future = [];
+    // const otherCurrent = [];
+    // const otherPast = [];
+    // const otherFuture = [];
   //   // iterate through data
   //   data.forEach(obj => {
   //     if(obj.user_id === 1 && obj.status === 'current') {
@@ -59,15 +59,13 @@ class App extends Component {
       
   //   });
 
-    // using our sampleState to populate state and cause re-render
     const current = [];
     const past = [];
     const future = [];
     const otherCurrent = [];
     const otherPast = [];
-    const otherFuture = [];
-
-    // iterate through sampleState data
+    const otherFuture = [];    
+    // // iterate through sampleState data
     sampleState.forEach(obj => {
       if(obj.user_id === 1 && obj.status === 'current') {
         current.push(obj);
@@ -89,13 +87,16 @@ class App extends Component {
         }
       });
     // re-render using sampleState data
-    this.setState({ current: current, past: past, future: future, otherCurrent: otherCurrent, otherPast: otherPast, otherFuture: otherFuture})
+    this.setState({ current: current, past: past, future: future, otherCurrent: otherCurrent, otherPast: otherPast, otherFuture: otherFuture});
   };
-  
   
   // code each container and its components and its logic
   
   render () {
+
+    if(this.state.hasError) {
+      return <h1>Somthing went wrong with state, hasError</h1>
+    };
     
     const { current, past, future, otherCurrent, otherPast, otherFuture } = this.state;
     
@@ -106,9 +107,9 @@ class App extends Component {
             <h1>BOOKWORM</h1>
             <h3>@user_1</h3>
           </div>
-            <CurrentContainer current= {current} otherCurrent= {otherCurrent}/>
-            {/* <PastContainer past={past} otherPast={otherPast} />
-            <FutureContainer future= {future} otherFuture= {otherFuture}/> */}
+          <CurrentContainer current={current} otherCurrent={otherCurrent}/>
+          {/* <PastContainer past={past} otherPast={otherPast} />
+          <FutureContainer future= {future} otherFuture={otherFuture}/> */}
         </div>
     )
           
@@ -189,7 +190,7 @@ export default App;
     }
     
     */
-    //array of objects with props that are colomn headers of sql tables
+    //array of objects with props that are column headers of sql tables
     
       //component did mount: fetch request to populate state
     /*

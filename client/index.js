@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 // import { BrowserRouter } from 'react-router-dom';
-// import App from './components/App';
+import App from './components/App';
 
 // eslint-disable-next-line no-unused-vars
 // import styles from './scss/application.scss'; 
@@ -11,7 +11,7 @@ const root = createRoot(container);
 root.render(
   // <BrowserRouter> // this is a react router thing
     <div className="appContainer">
-      {/* <App /> */}
+      <App />
       <h1>APP WILL GO HERE</h1>
       <h2>Seriously app will go here</h2>
     </div>
