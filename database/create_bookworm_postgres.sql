@@ -133,5 +133,3 @@ INSERT INTO public.reading_lists VALUES(15, 7, 7, 2, FALSE, NULL);
 INSERT INTO public.reading_lists VALUES(16, 7, 10, 1, TRUE, 'I LOVED this book!');
 
 -- postgres://dkkcsyzq:kmL7sCZe-lVTlpTeLLWeGMTfmUQK8ejp@batyr.db.elephantsql.com/dkkcsyzq
-
---past current future
