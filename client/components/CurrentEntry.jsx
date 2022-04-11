@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-// import * as React from 'react';
-// import React, { useState } from 'react';
-import { useState } from 'react';
+import React from "react";
+import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,10 +12,10 @@ class CurrentEntry extends Component {
     super(props);
 
     //any additional state would go here
-    this.state = {value: ''};
+    //this.state = {value: ''};
     //bind functions
 
-    // this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
   }
 
   // title= {this.props.current[i].title}
@@ -28,11 +27,11 @@ class CurrentEntry extends Component {
 render() {
   
   return (
-    <div>
-      <p><label>title: </label><span>{ this.props.title }</span></p>
-      <p><label>author: </label><span>{this.props.author}</span></p>
-      <p><label>genre: </label><span>{this.props.genre}</span></p>
-    </div>
+    <>
+      title: {this.props.title }
+      author: {this.props.author}
+      genre: {this.props.genre}
+    </>
   )
 }
 
@@ -41,7 +40,7 @@ render() {
 function BlankEntry() {
   const [genre, setGenre] = useState('0');
   const handleChange= (event) => {
-    this.setGenre({value: event.target.value});
+    setGenre(event.target.value);
   }
   const genres = [
     {
@@ -157,4 +156,4 @@ function BlankEntry() {
 }
 
 export default CurrentEntry;
-// export default BlankEntry;
+//export default BlankEntry;

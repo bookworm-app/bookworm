@@ -10,11 +10,16 @@ class CurrentContainer extends Component {
     //any additional state would go here
     this.state = {
       added: false,
+      view: true,
+      submit: false,
+      cancel: false,
       hidden: true
     }
     //bind functions
     this.addBook = this.addBook.bind(this);
     this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   //could iterate through the prop objects and set state again
@@ -61,23 +66,42 @@ class CurrentContainer extends Component {
 
   //{ this.state.urls && this.state.urls.map((url, idx) => <FeedItem key={idx} url={url} /> )}
 
+  handleSubmit(e){
+    e.preventDefault();
+    this.setState({submit: true})
+  }
+
+  handleCancel(e){
+    e.preventDefault();
+    this.setState({cancel: true})
+  }
+
   render () {
       
     const { current, past, future, otherCurrent, otherPast, otherFuture } = this.props;
     const { hidden } = this.state;
     const currentEntries = [];
 
-    // if(this.state.added === true) {
-    //   currentEntries.push(
-    //     <BlankEntry delete={this.state}/>
-    //   )
-    // }
-    for(let i=0; i < current.length; i++){
+    if(this.state.submit === true){
+      currentEntries.push(
+        <CurrentEntry handleSubmit={this.handleSubmit}/>
+      )
+      this.state.addBook = false;
+    }
+
+    if(this.state.added === true && this.state.cancel === false) {
+      currentEntries.push(
+        <blankEntry handleSubmit= { this.handleSubmit } handleCancel= { this.handleCancel }/>
+      ) 
+    }
+
+  
+    for(let i=0; i<this.props.current.length; i++){
       currentEntries.push(
         <CurrentEntry 
-          title= {this.props.current[i].title}
-          author= {this.props.current[i].author}
-          genre= {this.props.current[i].genre}
+        title= {this.props.current[i].title}
+        author= {this.props.current[i].author}
+        genre= {this.props.current[i].genre}
         />
       )
     }
