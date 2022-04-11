@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import CurrentEntry from './CurrentEntry'
-import OtherCurrentContainer from './OtherCurrentContainer';
-//more imports?
+import CurrentEntry from './CurrentEntry';
+import BlankEntry from './BlankEntry';
+import Button from '@mui/material/Button';
+//import OtherCurrentContainer from './OtherCurrentContainer';
+
+// //more imports?
 
 class CurrentContainer extends Component {
   constructor(props) {
@@ -17,69 +20,69 @@ class CurrentContainer extends Component {
     }
     //bind functions
     this.addBook = this.addBook.bind(this);
-    this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
+    //this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
+    //this.handleCancel = this.handleCancel.bind(this);
   }
 
-  //could iterate through the prop objects and set state again
+//   //could iterate through the prop objects and set state again
 
-  //i have access to prop that passes the objects where user_id is 1 and status is current
-    //reading_list._id
-    // user_id: 1
-    // username
-    // book_id
-    // title
-    // author
-    // genre_id
-    // genre
-    // status_id
-    // status: current
-    // recommend
-    // review
+//   //i have access to prop that passes the objects where user_id is 1 and status is current
+//     //reading_list._id
+//     // user_id: 1
+//     // username
+//     // book_id
+//     // title
+//     // author
+//     // genre_id
+//     // genre
+//     // status_id
+//     // status: current
+//     // recommend
+//     // review
     
-  // componentDidMount(){
+//   // componentDidMount(){
     
-  // }
+//   // }
 
-  //entriesDisplay( this.props.current )
+//   //entriesDisplay( this.props.current )
 
-  //for each object in current prop, 
+//   //for each object in current prop, 
 
   addBook(){
-    if(this.state.added === false){
-      // this.state.added = true
+    // if(this.state.added === false){
+    //   // this.state.added = true
       this.setState({added: true})
-    }
+    // }
   }
 
-  viewOtherCurrent(){
-    if(this.state.hidden === true) this.setState({ hidden: false });
-    else this.setState({ hidden: true });
-  }
+  // viewOtherCurrent(){
+  //   if(this.state.hidden === true) this.setState({ hidden: false });
+  //   else this.setState({ hidden: true });
+  // }
 
-  // deleteEntry();
-  // //this is a function that deletes the entry from the current reads section, also removing it from the DB
+//   // deleteEntry();
+//   // //this is a function that deletes the entry from the current reads section, also removing it from the DB
 
-  // updateEntry();
-    //this is a function that moves a book from the current reading list to the have read list
+//   // updateEntry();
+//     //this is a function that moves a book from the current reading list to the have read list
 
-  //{ this.state.urls && this.state.urls.map((url, idx) => <FeedItem key={idx} url={url} /> )}
+//   //{ this.state.urls && this.state.urls.map((url, idx) => <FeedItem key={idx} url={url} /> )}
 
   handleSubmit(e){
-    e.preventDefault();
+    //e.preventDefault();
     this.setState({submit: true})
   }
 
-  handleCancel(e){
-    e.preventDefault();
-    this.setState({cancel: true})
-  }
+  // handleCancel(e){
+  //   e.preventDefault();
+  //   this.setState({cancel: true})
+  // }
 
   render () {
       
-    const { current, past, future, otherCurrent, otherPast, otherFuture } = this.props;
-    const { hidden } = this.state;
+    //const { current, past, future, otherCurrent, otherPast, otherFuture } = this.props;
+    // const { hidden } = this.state;
     const currentEntries = [];
 
     if(this.state.submit === true){
@@ -88,13 +91,13 @@ class CurrentContainer extends Component {
       )
       this.state.addBook = false;
     }
-
-    if(this.state.added === true && this.state.cancel === false) {
+    // this.state.cancel === false
+    if(this.state.added === true) {
       currentEntries.push(
-        <blankEntry handleSubmit= { this.handleSubmit } handleCancel= { this.handleCancel }/>
+        <BlankEntry handleSubmit= {this.handleSubmit}/>
       ) 
     }
-
+    // handleSubmit= { this.handleSubmit } handleCancel= { this.handleCancel }
   
     for(let i=0; i<this.props.current.length; i++){
       currentEntries.push(
@@ -106,33 +109,38 @@ class CurrentContainer extends Component {
       )
     }
 
-    // togging visibility style property of OtherCurrentContainer based on view boolean from local state
-    // let otherCurrentView = { visibility: 'hidden' };
-    // this.state.hidden ? otherCurrentView : otherCurrentView = { visibility: 'hidden' };
+    //console.log(currentEntries);
+
+//     // togging visibility style property of OtherCurrentContainer based on view boolean from local state
+//     // let otherCurrentView = { visibility: 'hidden' };
+//     // this.state.hidden ? otherCurrentView : otherCurrentView = { visibility: 'hidden' };
     
     return (
         <div className="currentContainer">
           {/* { this.props.current} */}
           {/* for each object, render an entry component, pass down the  */}
-          <button onClick= {this.addBook} id= 'addButton'>Add Book</button>
+          {/* <button onClick= {this.addBook} id= 'addButton'>Add Book</button> */}
+          <h2>CURRENT READS</h2>
+          <Button onClick= {this.addBook} id= 'addButton' size="small" color="secondary" variant="contained">Add Book</Button>
+          {/* <BlankEntry /> */}
           { currentEntries }
-          <div>
-            <button onClick={this.viewOtherCurrent} id='viewOtherCurrent' > + </button>
-            <label>What My Friends Are Reading</label>
-          </div >
-          <div style={{ visibility: hidden ? "hidden" : "visible" }}>
-            <OtherCurrentContainer 
-                otherCurrent={otherCurrent} 
+           {/* <div>
+             <button onClick={this.viewOtherCurrent} id='viewOtherCurrent' > + </button>
+             <label>What My Friends Are Reading</label>
+           </div > */}
+           {/* <div style={{ visibility: hidden ? "hidden" : "visible" }}>
+             <OtherCurrentContainer 
+                otherCurrent={this.props.otherCurrent} s
             />
             
-          </div>
-            
+          </div> */}
+          {/* //<h1>hey</h1> */}
         </div>
     )
           
-  } 
+   } 
 
-}
+ }
 
 
 export default CurrentContainer;
