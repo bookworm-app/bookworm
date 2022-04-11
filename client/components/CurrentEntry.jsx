@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
+import Button from '@mui/material/Button';
 
 class CurrentEntry extends Component {
   constructor(props) {
@@ -13,8 +14,7 @@ class CurrentEntry extends Component {
     //any additional state would go here
     this.state = {value: ''};
     //bind functions
-    this.deleteEntry = this.deleteEntry.bind(this);
-    this.updateEntry = this.updateEntry.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -112,6 +112,7 @@ function BlankEntry() {
     >
       <div>
       <TextField
+          color= "secondary"
           label="Title"
           id="addCurrentTitle"
           sx={{ m: 1, width: '25ch' }}
@@ -120,6 +121,7 @@ function BlankEntry() {
           }}
         />
         <TextField
+        color= "secondary"
           label="Author"
           id="addCurrentTitle"
           sx={{ m: 1, width: '25ch' }}
@@ -128,6 +130,7 @@ function BlankEntry() {
           }}
         />
         <TextField
+        color= "secondary"
           id="outlined-select-currency"
           select
           label="Genre"
@@ -141,6 +144,10 @@ function BlankEntry() {
             </MenuItem>
           ))}
         </TextField>
+      </div>
+      <div>
+        <Button variant="contained">Submit</Button>
+      <Button variant="outlined">Cancel</Button>
       </div>
       
       
