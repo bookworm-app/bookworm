@@ -10,7 +10,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 CREATE TABLE public.users (
-	"_id" serial NOT NULL,
+	"_id" serial NOT NULL AUTO_INCREMENT,
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
 	"first_name" varchar(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE public.users (
 
 
 CREATE TABLE public.reading_lists (
-	"_id" serial NOT NULL,
+	"_id" serial NOT NULL AUTO_INCREMENT,
 	"user_id" serial NOT NULL,
 	"book_id" serial NOT NULL,
 	"status_id" serial NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE public.reading_lists (
 
 
 CREATE TABLE public.books (
-	"_id" serial NOT NULL,
+	"_id" serial NOT NULL AUTO_INCREMENT,
 	"title" varchar(255) NOT NULL,
 	"author" varchar(255) NOT NULL,
 	"genre_id" serial,
