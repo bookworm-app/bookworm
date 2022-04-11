@@ -10,7 +10,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 CREATE TABLE public.users (
-	"_id" serial NOT NULL AUTO_INCREMENT,
+	"_id" serial NOT NULL,
 	"username" varchar(255) NOT NULL UNIQUE,
 	"password" varchar(255) NOT NULL,
 	"first_name" varchar(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE public.users (
 
 
 CREATE TABLE public.reading_lists (
-	"_id" serial NOT NULL AUTO_INCREMENT,
+	"_id" serial NOT NULL,
 	"user_id" serial NOT NULL,
 	"book_id" serial NOT NULL,
 	"status_id" serial NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE public.reading_lists (
 
 
 CREATE TABLE public.books (
-	"_id" serial NOT NULL AUTO_INCREMENT,
+	"_id" serial NOT NULL,
 	"title" varchar(255) NOT NULL,
 	"author" varchar(255) NOT NULL,
 	"genre_id" serial,
@@ -133,5 +133,3 @@ INSERT INTO public.reading_lists VALUES(15, 7, 7, 2, FALSE, NULL);
 INSERT INTO public.reading_lists VALUES(16, 7, 10, 1, TRUE, 'I LOVED this book!');
 
 -- postgres://dkkcsyzq:kmL7sCZe-lVTlpTeLLWeGMTfmUQK8ejp@batyr.db.elephantsql.com/dkkcsyzq
-
---past current future
