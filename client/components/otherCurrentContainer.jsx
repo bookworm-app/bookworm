@@ -9,13 +9,13 @@ const OtherCurrentContainer = ({ otherCurrent }) => {
     // THEN IMPORT AND USE THAT COMPONENT INSTEAD
 
     // iterate through up to 5 past current entries from other users
-    for(let i = 0; i < 5; i++) {
-        const { title, author, genre } = otherCurrent[i];
+    for(let i = 0; i < otherCurrent.length; i++) {
+        // const { title, author, genre } = otherCurrent[i];
         otherCurrentElements.push(
             <CurrentEntry
-                title={title}
-                author={author}
-                genre={genre}
+                title={otherCurrent[i].title}
+                author={otherCurrent[i].author}
+                genre={otherCurrent[i].genre}
             />
         )
     }
