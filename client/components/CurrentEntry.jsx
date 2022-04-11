@@ -12,10 +12,10 @@ class CurrentEntry extends Component {
     super(props);
 
     //any additional state would go here
-    this.state = {value: ''};
+    //this.state = {value: ''};
     //bind functions
 
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
   }
 
   // title= {this.props.current[i].title}
@@ -40,7 +40,7 @@ render() {
 function BlankEntry() {
   const [genre, setGenre] = useState('0');
   const handleChange= (event) => {
-    this.setGenre({value: event.target.value});
+    setGenre(event.target.value);
   }
   const genres = [
     {

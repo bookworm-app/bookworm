@@ -1,5 +1,4 @@
-import { getFormControlUnstyledUtilityClasses } from "@mui/base";
-import React from "react";
+import React, { Component } from "react";
 import CurrentEntry from './CurrentEntry'
 import OtherCurrentContainer from './OtherCurrentContainer';
 //more imports?
@@ -13,7 +12,8 @@ class CurrentContainer extends Component {
       added: false,
       view: true,
       submit: false,
-      cancel: false
+      cancel: false,
+      hidden: true
     }
     //bind functions
     this.addBook = this.addBook.bind(this);
@@ -54,8 +54,8 @@ class CurrentContainer extends Component {
   }
 
   viewOtherCurrent(){
-    if(this.state.view === false) this.setState({ view: true });
-    else this.setState({ view: false });
+    if(this.state.hidden === true) this.setState({ hidden: false });
+    else this.setState({ hidden: true });
   }
 
   // deleteEntry();
@@ -78,7 +78,8 @@ class CurrentContainer extends Component {
 
   render () {
       
-    //const { current, past, future, otherCurrent, otherPast, otherFuture } = this.state;
+    const { current, past, future, otherCurrent, otherPast, otherFuture } = this.props;
+    const { hidden } = this.state;
     const currentEntries = [];
 
     if(this.state.submit === true){
@@ -95,9 +96,9 @@ class CurrentContainer extends Component {
     }
 
   
-    for(let i=0; i<this.props.current; i++){
+    for(let i=0; i<this.props.current.length; i++){
       currentEntries.push(
-        <currentEntry 
+        <CurrentEntry 
         title= {this.props.current[i].title}
         author= {this.props.current[i].author}
         genre= {this.props.current[i].genre}
@@ -106,23 +107,26 @@ class CurrentContainer extends Component {
     }
 
     // togging visibility style property of OtherCurrentContainer based on view boolean from local state
-    let otherCurrentView = { visibility: 'visible' };
-    this.state.view ? otherCurrentView : otherCurrentView = { visibility: 'hidden' };
+    // let otherCurrentView = { visibility: 'hidden' };
+    // this.state.hidden ? otherCurrentView : otherCurrentView = { visibility: 'hidden' };
     
     return (
         <div className="currentContainer">
-          { this.props.current}
+          {/* { this.props.current} */}
           {/* for each object, render an entry component, pass down the  */}
           <button onClick= {this.addBook} id= 'addButton'>Add Book</button>
           { currentEntries }
           <div>
             <button onClick={this.viewOtherCurrent} id='viewOtherCurrent' > + </button>
             <label>What My Friends Are Reading</label>
-          </div>
-            <otherCurrentContainer 
-              style={otherCurrentView}
-              otherCurrent={} 
+          </div >
+          <div style={{ visibility: hidden ? "hidden" : "visible" }}>
+            <OtherCurrentContainer 
+                otherCurrent={otherCurrent} 
             />
+            
+          </div>
+            
         </div>
     )
           
