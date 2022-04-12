@@ -1,0 +1,4 @@
+.currentFutureDiv {
+  display: flex;
+  flex-direction: row;
+}
