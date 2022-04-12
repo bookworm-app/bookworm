@@ -37,6 +37,9 @@ reviewsController.updateReview = (req, res, next) => {
 // get controller implemented for testing, not currently used by frontend
 reviewsController.getReviews = (req, res, next) => {
   const _id = req.params.id;
+  console.log(req);
+  console.log(req.params);
+  console.log(req.body);
   let getReviewQuery = 'SELECT rl._id, u.username, b.title, b.author, g.genre, s.status, rl.recommend, rl.review FROM reading_lists rl\
   LEFT OUTER JOIN users u ON rl.user_id = u._id\
   LEFT OUTER JOIN books b ON rl.book_id = b._id\
@@ -52,6 +55,7 @@ reviewsController.getReviews = (req, res, next) => {
   db.query(getReviewQuery, getReviewParams)
     .then(dbResponse => {
       res.locals.reviews = dbResponse.rows;
+      // console.log(res.locals.reviews); //dbResonse.rows = array w objects. Each obj = entry w username, title, author, genre, status, etc.
       return next();
     })
     .catch((err) => {
