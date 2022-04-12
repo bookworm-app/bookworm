@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import App from './components/App';
 
 // eslint-disable-next-line no-unused-vars
-// import styles from './scss/application.scss'; 
+import styles from './styles.scss'; 
 
 const container = document.getElementById('root');
 const root = createRoot(container);

@@ -7,7 +7,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
 
 
-function BlankEntry(props) {
+function BlankPastEntry(props) {
+
   const [title, setTitle] = useState('');
   // const [titleError, setTitleError] = useState(null);
   const handleTitleChange= (event) => {
@@ -21,9 +22,16 @@ function BlankEntry(props) {
   }
 
   const [genre, setGenre] = useState('0');
-  // const [genreError, setGenreError] = useState(null);
   const handleGenreChange= (event) => {
     setGenre(event.target.value);
+  }
+  const [recommend, setRecommend] = useState('0');
+  const handleRecommendChange= (event) => {
+    setRecommend(event.target.value)
+  }
+  const [review, setReview] = useState('');
+  const handleReviewChange= (event) => {
+    setReview(event.target.value)
   }
   const genres = [
     {
@@ -84,16 +92,38 @@ function BlankEntry(props) {
     },
   ];
 
+  const recommendOptions = [
+    {
+      value: '0',
+      label: 'Choose Recommendation'
+    },
+    {
+      value: '1',
+      label: 'Would Recommend'
+    },
+    {
+      value: '2',
+      label: 'Wouldn\'t Recommend'
+    }
+  ]
   const saveBook = () => {
     // if (title === '') setTitleError('required');
     // if (author === '') setAuthorError('required');
     // if (genre === 0) setAuthorError('choose a genre');
     // args: userId=1, title from state, author from state, genre is not needed
     // genreId gets genre from state, status is not needed, statusId=2 for 'present'
-    props.addBookFetch(1, title, author, undefined, genre, undefined, 2);
-    props.handleCancel();
+    let recommendArg;
+    if (recommend === '1') {
+      recommendArg = true;
+    } else if (recommend === '2') {
+      recommendArg = false;
+    } else {
+      recommendArg = null;
+    }
+    props.addBookFetch(1, title, author, undefined, genre, undefined, 1, recommend, review);
+    //props.handleCancel();
   }
-  
+
   return(
 <Box
       component="form"
@@ -118,7 +148,7 @@ function BlankEntry(props) {
         <TextField
         color= "secondary"
           label="Author"
-          id="addCurrentTitle"
+          id="addCurrentAuthor"
           value={author}
           onChange={handleAuthorChange}
           sx={{ m: 1, width: '23ch' }}
@@ -128,12 +158,13 @@ function BlankEntry(props) {
         />
         <TextField
         color= "secondary"
-          id="outlined-select-currency"
+          id="outlined-select-genre"
           select
           label="Genre"
-          value={genre}
-          onChange={handleGenreChange}
           sx={{ m: 1, width: '23ch' }}
+          value={genre}
+          // onChange={handleChange}
+          onChange={handleGenreChange}
           // helperText="Please select your currency"
         >
           {genres.map((option) => (
@@ -142,20 +173,43 @@ function BlankEntry(props) {
             </MenuItem>
           ))}
         </TextField>
-        <Button className= "buttons" size="small" color="secondary" variant="contained" onClick={saveBook} >Submit</Button>
-        <Button className= "buttons" size="small" color="secondary" variant="outlined" onClick={props.handleCancel} >Cancel</Button>
+        <TextField
+        color= "secondary"
+          id="outlined-select-recommend"
+          select
+          label="Recommend"
+          sx={{ m: 1, width: '20ch' }}
+          value={recommend}
+          onChange={handleRecommendChange}
+          // helperText="Please select your currency"
+        >
+          {recommendOptions.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
+          color= "secondary"
+          label="Review"
+          sx={{ m: 1, width: '50ch' }}
+          id="addPastReview"
+          multiline
+          maxRows = {4}
+          value={review}
+          onChange={handleReviewChange}
+          // sx={{ m: 1, width: '27ch' }}
+          InputProps={{
+            //startAdornment: <InputAdornment position="start"></InputAdornment>,
+          }}
+        />
+
+        <Button size="small" color="secondary" variant="contained">Submit</Button>
+        <Button size="small" color="secondary" variant="outlined" onClick={props.handleCancel} >Cancel</Button>
       </div>
       
     </Box>
   ) 
 }
 
-export default BlankEntry;
-// {/* <Button onClick= {handleCancel} color="secondary" variant="outlined">Cancel</Button> */}
-// {/* <div>
-//   <Button variant="contained">Submit</Button>
-// <Button variant="outlined">Cancel</Button>
-// </div> */}
-// {/* <form onSubmit= {handleSubmit}>
-//   <Button type= "submit" color="secondary" variant="contained">Submit</Button>
-// {/* <Button onClick= {handleCancel} color="secondary" variant="outlined">Cancel</Button> */
+export default BlankPastEntry;

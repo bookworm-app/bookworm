@@ -89,7 +89,6 @@ booksController.updateBookStatus = (req, res, next) => {
     } else {
         input.push(false);
     }
-    console.log(input)
 
     let statusChange =
         'UPDATE reading_lists\
