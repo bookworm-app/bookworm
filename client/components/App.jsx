@@ -37,7 +37,7 @@ class App extends Component {
   
   componentDidMount() {
     // live data
-    this.fetchAll();
+     this.fetchAll();
   }
     // const current = [];
 //     const past = [];
