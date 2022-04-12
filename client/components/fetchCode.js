@@ -10,7 +10,8 @@ this.addBookFetch = this.addBookFetch.bind(this);
 this.moveBookFetch = this.moveBookFetch.bind(this);
 this.deleteBookFetch = this.deleteBookFetch.bind(this);
 // ROUTE: /reviews
-
+this.updateReviewFetch = this.updateReviewFetch.bind(this);
+this.deleteReviewFetch = this.deleteReviewFetch.bind(this);
 
 // method for fetchAll - triggers re-render
 //   fetch request for majority of data from reading list
@@ -24,43 +25,45 @@ this.deleteBookFetch = this.deleteBookFetch.bind(this);
 // ROUTE: GET books/all
 // response: an array of objects with all the readingList items from all users, and genres, status, book title, author, etc. 
 
-fetchAll() {
-    fetch('./books/all')
-    .then(res => res.json())
-    .then(data => {
-      // create output arrays
-      const current = [];
-      const past = [];
-      const future = [];
-      const otherCurrent = [];
-      const otherPast = [];
-      const otherFuture = [];
-      // iterate through data
-      data.forEach(obj => {
-        if(obj.userId === 1 && obj.status === 'current') {
-          current.push(obj);
-        }
-        else if(obj.userId === 1 && obj.status === 'past') {
-          past.push(obj)
-          }
-          else if(obj.userId === 1 && obj.status === 'future') {
-            future.push(obj);
-          }
-          else if(obj.userId !== 1 && obj.status === 'current') {
-            otherCurrent.push(obj);
-          }
-          else if(obj.userId !== 1 && obj.status === 'past') {
-            otherPast.push(obj);
-          }
-          else if(obj.userId !== 1 && obj.status === 'future') {
-            otherFuture.push(obj);
-          }
-        });
-        // do we need to return this.setState
-        this.setState({ current: current, past: past, future: future, otherCurrent: otherCurrent, otherPast: otherPast, otherFuture: otherFuture});
-      }).catch(err => console.log('Problem with fetchAll method: ERROR:', err));
 
-};
+// FETCHALL CODE MIGRATED TO APP JSX
+// fetchAll() {
+//     fetch('./books/all')
+//     .then(res => res.json())
+//     .then(data => {
+//       // create output arrays
+//       const current = [];
+//       const past = [];
+//       const future = [];
+//       const otherCurrent = [];
+//       const otherPast = [];
+//       const otherFuture = [];
+//       // iterate through data
+//       data.forEach(obj => {
+//         if(obj.userId === 1 && obj.status === 'current') {
+//           current.push(obj);
+//         }
+//         else if(obj.userId === 1 && obj.status === 'past') {
+//           past.push(obj)
+//           }
+//           else if(obj.userId === 1 && obj.status === 'future') {
+//             future.push(obj);
+//           }
+//           else if(obj.userId !== 1 && obj.status === 'current') {
+//             otherCurrent.push(obj);
+//           }
+//           else if(obj.userId !== 1 && obj.status === 'past') {
+//             otherPast.push(obj);
+//           }
+//           else if(obj.userId !== 1 && obj.status === 'future') {
+//             otherFuture.push(obj);
+//           }
+//         });
+//         // do we need to return this.setState
+//         this.setState({ current: current, past: past, future: future, otherCurrent: otherCurrent, otherPast: otherPast, otherFuture: otherFuture});
+//       }).catch(err => console.log('Problem with fetchAll method: ERROR:', err));
+
+// };
 
 
 // ROUTE: GET books/:id
@@ -75,22 +78,23 @@ fetchAll() {
 // recommend and review are optional
 // response: created reading list item
 
-addBookFetch(userId, title, author, genre, genreId, status, statusId, recommend, review) {
+// HAS BEEN ADDED TO APP JSX
+addBookFetch(userid, title, author, genre, genreid, status, statusid, recommend, review) {
     console.log(`------> inside of addBookFetch Function`);
     // declare requestBody
     const requestBody = {
         title: title,
         author: author,
         genre: genre,
-        genreId: genreId,
+        genreid: genreid,
         status: status,
-        statusId: statusId,
+        statusid: statusid,
         recommend: recommend,
         review: review
     }
     console.log(`-----> after requestBody declared, ${requestBody}`);
-    console.log(`------> userId: ${userId}`);
-    fetch(`books/${userId}`, {
+    console.log(`------> userId: ${userid}`);
+    fetch(`books/${userid}`, {
         method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {
@@ -115,16 +119,16 @@ addBookFetch(userId, title, author, genre, genreId, status, statusId, recommend,
 // body: statusId, recommend
 // response: updated reading list item
 
-moveBookFetch(readingListId, statusId, recommend) {
+moveBookFetch(readinglistid, statusid, recommend) {
     console.log('-----> ENTERING moveBookFetch function!!!');
 
     const requestBody = {
-        statusId: statusId,
+        statusid: statusid,
         recommend: recommend
     };
     console.log(`-----> after requestBody declared, ${requestBody}`);
-    console.log(`------> readingListId: ${readingListId}`);
-    fetch(`books/${userId}`, {
+    console.log(`------> readingListId: ${readinglistid}`);
+    fetch(`books/${userid}`, {
         method: 'PATCH',
         body: JSON.stringify(requestBody),
         headers: {
@@ -150,9 +154,9 @@ moveBookFetch(readingListId, statusId, recommend) {
 // no body required
 // response: deleted reading list item
 
-deleteBookFetch(readingListId) {
+deleteBookFetch(readinglistid) {
     // no body required
-    fetch(`books/${readingListId}`, {
+    fetch(`books/${readinglistid}`, {
         method: 'DELETE',
         body: {},
         headers: {
@@ -172,4 +176,60 @@ deleteBookFetch(readingListId) {
 
 // FETCHES FOR /reviews!!!!!!-------------------------------------------->
 
-// ROUTE: PATCH 
+// ADD AN REVIEW
+// ROUTE: PATCH reviews/:id
+// query param "id" = readingListId
+// body: review as string format
+// response: updated reading list item
+
+updateReviewFetch(readinglistid, review) {
+    console.log('-----> ENTERING updateReviewFetch function!!!');
+
+    const requestBody = {
+        readinglistid: readinglistid,
+        review: review
+    };
+    console.log(`-----> after requestBody declared, ${requestBody}`);
+    console.log(`------> readingListId: ${readinglistid}`);
+    fetch(`reviews/${readinglistid}`, {
+        method: 'PATCH',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    })
+    .then(data => data.json())
+    .then(response => {
+      // printing response from server
+      console.log(`successful updateReviewFetch request - should get reading list item: ${response}`);
+      // fetch request for books/all - that will re-render state
+      this.fetchAll();
+    
+    }).catch(err => console.log('Problem with updateReviewFetch method: ERROR:', err));
+}
+
+// 
+
+// ROUTE DELETE reviews/:id
+// query param "id" = readinglistid
+// body: not required
+// response: updated reading list item
+
+deleteReviewFetch(readinglistid) {
+    // no body required
+    fetch(`reviews/${readinglistid}`, {
+        method: 'DELETE',
+        body: {},
+        headers: {
+            'Content-type': 'application/json',
+        }
+    })
+    .then(data => data.json())
+    .then(response => {
+        // printing response from server
+      console.log(`successful deleteReviewFetch request: ${response}`);
+      // fetch request for books/all
+      this.fetchAll();
+    
+    }).catch(err => console.log('Problem with deleteReviewFetch method: ERROR:', err));
+}

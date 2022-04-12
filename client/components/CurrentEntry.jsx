@@ -29,9 +29,9 @@ render() {
   return (
     <Box
       component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
+      // sx={{
+      //   '& .MuiTextField-root': { m: 1, width: '25ch' },
+      // }}
       noValidate
       autoComplete="off"
     >
@@ -42,6 +42,7 @@ render() {
       <TextField
           id="outlined-read-only-input"
           label="Title: "
+          sx={{ m: 1, width: '25ch' }}
           defaultValue={this.props.title}
           InputProps={{
             readOnly: true,
@@ -50,6 +51,7 @@ render() {
         <TextField
           id="outlined-read-only-input"
           label="Author: "
+          sx={{ m: 1, width: '23ch' }}
           defaultValue={this.props.author}
           InputProps={{
             readOnly: true,
@@ -58,6 +60,7 @@ render() {
         <TextField
           id="outlined-read-only-input"
           label="Genre: "
+          sx={{ m: 1, width: '23ch' }}
           defaultValue={this.props.genre}
           InputProps={{
             readOnly: true,
@@ -68,124 +71,5 @@ render() {
   )
 }
 }
-// }
-
-// function BlankEntry() {
-//   const [genre, setGenre] = useState('0');
-//   const handleChange= (event) => {
-//     setGenre(event.target.value);
-//   }
-//   const genres = [
-//     {
-//       value: '0',
-//       label: 'Choose Genre',
-//     },
-//     {
-//       value: '1',
-//       label: 'Classic',
-//     },
-//     {
-//       value: '2',
-//       label: 'Comedy',
-//     },
-//     {
-//       value: '3',
-//       label: 'Mystery',
-//     },
-//     {
-//       value: '4',
-//       label: 'SciFi/Fantasy',
-//     },
-//     {
-//       value: '5',
-//       label: 'Historical',
-//     },
-//     {
-//       value: '6',
-//       label: 'Horror',
-//     },
-//     {
-//       value: '7',
-//       label: 'Romance',
-//     },
-//     {
-//       value: '8',
-//       label: 'Western',
-//     },
-//     {
-//       value: '9',
-//       label: 'Politics',
-//     },
-//     {
-//       value: '10',
-//       label: 'Fiction',
-//     },
-//     {
-//       value: '11',
-//       label: 'Non-Fiction',
-//     },
-//     {
-//       value: '12',
-//       label: 'Children',
-//     },
-//     {
-//       value: '13',
-//       label: 'Other',
-//     },
-//   ];
-  
-//   return(
-// <Box
-//       component="form"
-//       sx={{
-//         '& .MuiTextField-root': { m: 1, width: '25ch' },
-//       }}
-//       noValidate
-//       autoComplete="off"
-//     >
-//       <div>
-//       <TextField
-//           color= "secondary"
-//           label="Title"
-//           id="addCurrentTitle"
-//           sx={{ m: 1, width: '25ch' }}
-//           InputProps={{
-//             startAdornment: <InputAdornment position="start">Insert Title</InputAdornment>,
-//           }}
-//         />
-//         <TextField
-//         color= "secondary"
-//           label="Author"
-//           id="addCurrentTitle"
-//           sx={{ m: 1, width: '25ch' }}
-//           InputProps={{
-//             startAdornment: <InputAdornment position="start">Insert Author</InputAdornment>,
-//           }}
-//         />
-//         <TextField
-//         color= "secondary"
-//           id="outlined-select-currency"
-//           select
-//           label="Genre"
-//           value={genre}
-//           onChange={handleChange}
-//           // helperText="Please select your currency"
-//         >
-//           {genres.map((option) => (
-//             <MenuItem key={option.value} value={option.value}>
-//               {option.label}
-//             </MenuItem>
-//           ))}
-//         </TextField>
-//       </div>
-//       <div>
-//         <Button variant="contained">Submit</Button>
-//       <Button variant="outlined">Cancel</Button>
-//       </div>
-      
-      
-//     </Box>
-//   ) 
-// }
 
 export default CurrentEntry;

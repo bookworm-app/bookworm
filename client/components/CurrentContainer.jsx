@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CurrentEntry from './CurrentEntry';
 import BlankEntry from './BlankEntry';
 import Button from '@mui/material/Button';
-//import OtherCurrentContainer from './OtherCurrentContainer';
+import OtherCurrentContainer from './OtherCurrentContainer';
 
 // //more imports?
 
@@ -20,9 +20,9 @@ class CurrentContainer extends Component {
     }
     //bind functions
     this.addBook = this.addBook.bind(this);
-    //this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    //this.handleCancel = this.handleCancel.bind(this);
+    this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
 //   //could iterate through the prop objects and set state again
@@ -56,10 +56,10 @@ class CurrentContainer extends Component {
     // }
   }
 
-  // viewOtherCurrent(){
-  //   if(this.state.hidden === true) this.setState({ hidden: false });
-  //   else this.setState({ hidden: true });
-  // }
+  viewOtherCurrent(){
+    if(this.state.hidden === true) this.setState({ hidden: false });
+    else this.setState({ hidden: true });
+  }
 
 //   // deleteEntry();
 //   // //this is a function that deletes the entry from the current reads section, also removing it from the DB
@@ -69,39 +69,40 @@ class CurrentContainer extends Component {
 
 //   //{ this.state.urls && this.state.urls.map((url, idx) => <FeedItem key={idx} url={url} /> )}
 
-  handleSubmit(e){
-    //e.preventDefault();
-    this.setState({submit: true})
-  }
-
-  // handleCancel(e){
-  //   e.preventDefault();
-  //   this.setState({cancel: true})
+  // could not get this to work. goal is to collapse blank entry component upon pushing submit
+  // handleSubmit(e){
+  //   //e.preventDefault();
+  //   this.setState({added: false});
   // }
+
+  handleCancel(e){
+    e.preventDefault();
+    this.setState({added: false});
+  }
 
   render () {
       
-    //const { current, past, future, otherCurrent, otherPast, otherFuture } = this.props;
-    // const { hidden } = this.state;
+    const { current, past, future, otherCurrent, otherPast, otherFuture, addBookFetch } = this.props;
+    const { hidden } = this.state;
     const currentEntries = [];
 
     if(this.state.submit === true){
       currentEntries.push(
-        <CurrentEntry handleSubmit={this.handleSubmit}/>
+        <CurrentEntry handleSubmit={this.handleSubmit} />
       )
       this.state.addBook = false;
     }
     // this.state.cancel === false
     if(this.state.added === true) {
       currentEntries.push(
-        <BlankEntry handleSubmit= {this.handleSubmit}/>
+        <BlankEntry handleCancel={this.handleCancel} addBookFetch={addBookFetch} />
       ) 
     }
     // handleSubmit= { this.handleSubmit } handleCancel= { this.handleCancel }
   
     for(let i=0; i<this.props.current.length; i++){
       currentEntries.push(
-        <CurrentEntry 
+        <CurrentEntry key={this.props.current[i].readinglistid}
         title= {this.props.current[i].title}
         author= {this.props.current[i].author}
         genre= {this.props.current[i].genre}
@@ -116,25 +117,26 @@ class CurrentContainer extends Component {
 //     // this.state.hidden ? otherCurrentView : otherCurrentView = { visibility: 'hidden' };
     
     return (
-        <div className="currentContainer">
+        <div className="currentContainer" id="currentCon">
           {/* { this.props.current} */}
           {/* for each object, render an entry component, pass down the  */}
           {/* <button onClick= {this.addBook} id= 'addButton'>Add Book</button> */}
           <h2>CURRENT READS</h2>
-          <Button onClick= {this.addBook} id= 'addButton' size="small" color="secondary" variant="contained">Add Book</Button>
+          {"\n"}
+          <Button onClick= {this.addBook} className='addBooksButton' id= 'addButton' size="small" color="secondary" variant="contained">Add Book</Button>
           {/* <BlankEntry /> */}
           { currentEntries }
-           {/* <div>
-             <button onClick={this.viewOtherCurrent} id='viewOtherCurrent' > + </button>
-             <label>What My Friends Are Reading</label>
-           </div > */}
-           {/* <div style={{ visibility: hidden ? "hidden" : "visible" }}>
+           <div>
+             <Button onClick={this.viewOtherCurrent} id='viewOtherCurrent' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
+             {/* <label>What My Friends Are Reading</label> */}
+           </div >
+           <div style={{ display: hidden ? "none" : "contents" }}>
              <OtherCurrentContainer 
-                otherCurrent={this.props.otherCurrent} s
+                otherCurrent={this.props.otherCurrent}
             />
             
-          </div> */}
-          {/* //<h1>hey</h1> */}
+          </div>
+          {/* <h1>hey</h1> */}
         </div>
     )
           
