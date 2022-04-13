@@ -71,7 +71,7 @@ class App extends Component {
 //   };
 
   fetchAll() {
-    fetch('./books/all')
+    fetch('http://localhost:3000/books/all') //modified to absolute URL
     .then(res => res.json())
     .then(data => {
       // create output arrays

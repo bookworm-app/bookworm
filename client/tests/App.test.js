@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import React from 'react'
 import App from '../components/App'
 
-// describe('Unit testing App.jsx', () =>{
+ describe('Unit testing App.jsx', () =>{
     
     test('renders Bookworm header in App', ()=> {
 
@@ -14,5 +14,5 @@ import App from '../components/App'
         });
 
 
-
+})
 
