@@ -1,9 +1,90 @@
 h1 {
   text-align: center;
+  font-weight: 400;
+  
 }
 
 body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+.appContainer {
+  margin: 0;
+  background-color: rgb(255, 255, 255);
+}
+//top menu display
+.menu {
+  background-color: #73b6ff;
+  margin: 0;
+  padding: 10px;
+  color: rgb(39, 39, 39);
+  letter-spacing: 0.07em;
+  position: fixed;
+  width: 100%;
+  border-bottom: 2px solid #2718ff;
+}
+
+#main{
+  padding-top: 200px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future";
+}
+
+#main h2{
+  padding-left: 60px;
+  font-weight: 400;
+}
+//current books display
+#bookcard {
+ 
+  text-align: center;
+  margin: 30px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 5%;
+  width: 70%;
+}
+#bookcard:hover {
+  border:1px solid #73b6ff;
+}
+
+#modal {
+ height: 400px;
+ width: 60%;
+}
+
+#presentBookCard {
+  grid-area: current;
+}
+#pastBookCard {
+  grid-area: past;
+}
+#futureBookCard{
+  grid-area: future;
+}
+
+#infoBtn{
+  background-color: #73b6ff;
+  color:  rgb(255, 255, 255);
+  padding: 7px;
+  border-radius: 5%;
+  border: 1px solid black;
+}
+#infoBtn:hover{
+  background-color: rgb(255, 255, 255);
+  color:rgb(39, 39, 39)
 }
 
 .currentContainer{
@@ -39,3 +120,9 @@ button {
 //   flex-direction: column;
 //   align-items: space-between;
 // }
+
+
+
+
+
+//ADD MEDIA QUERIES HERE

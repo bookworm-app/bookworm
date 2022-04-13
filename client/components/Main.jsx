@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 // import CurrentContainer from './CurrentContainer';
 // import FutureContainer from './FutureContainer';
 // import PastContainer from './PastContainer';
 // import sampleState from './sampleState';
 // import { createTheme } from '@mui/material/styles';
-import Menu from './Menu';
-import Main from './Main';
 // import '../styles.scss';
 
 // const theme = createTheme({
@@ -20,7 +18,7 @@ import Main from './Main';
 //   },
 // });
 
-// class App extends Component {
+// class Main extends Component {
 //   constructor(props) {
 //     super(props);
 //     this.state = {
@@ -124,10 +122,7 @@ import Main from './Main';
     
 //     return (
 //         // <div className="mainContainer">
-//       <div className= "divInMain">
-//         <Menu />
-//         <Main />
-        
+//       <div className= "divInMain">    
 //         <div className= "currentFutureDiv" id= "theDiv">
 //           <CurrentContainer current={current} otherCurrent={otherCurrent} addBookFetch={this.addBookFetch}/>
 //           <FutureContainer future= {future} otherFuture={otherFuture}/>
@@ -138,27 +133,52 @@ import Main from './Main';
 //       </div>    
 //     )
 //   }
-// }
+// };
     
-// export default App;
+// export default Main;
 
 
 
+// ----------- THIS IS THE NEW MAIN CONTAINER ---------------------------------
+import React, { useEffect, useState } from 'react';
+import BookCard from './BookCard';
 
+const Main = (props) => {
+// --- STATE FOR MAIN COMPONENT -------
+  const [data, setData] = useState(null);
 
-
-// -------   THIS IS THE NEW VERSION OF THE APP COMPONENT --------------
-
-function App(){
-
-// ---- APP COMPONENT DISPLAYS... --------------
-  return (
-    <div>
-      <Menu />
-      <Main />
+// ---GET REQUEST FOR ALL BOOKS IN DATABASE
+  useEffect(()=>{
+    fetch('/books/all', {
+      method: 'GET'
+    })
+      .then(res => res.json()) 
+      .then(res => {
+        const bookInfo = Object.values(res);
+        setData(bookInfo)
+        console.log(bookInfo[0])
+      })
       
-    </div>
-  );
-};
+      .catch(err=>{console.log(err)})
+  },[])
 
-export default App;
+// ------- MAIN COMPONENT DISPLAYS... ---------------
+return (
+    // <section className='main' id="main">
+    //   {data && data.map(books => <BookCard key={"book"+ books.readinglistid} books={books}/>)}
+    // </section>
+  <main id="main">
+    <div id="presentBookCard">
+      {data && data.map(books => <BookCard key={"book"+ books.readinglistid} books={books}/>)}
+    </div>
+    <div id="pastBookCard">
+      {data && data.map(books => <BookCard key={"book"+ books.readinglistid} books={books}/>)}
+    </div>
+    <div id="futureBookCard">
+      {data && data.map(books => <BookCard key={"book"+ books.readinglistid} books={books}/>)}
+    </div>
+  </main>
+)
+}
+
+export default Main;
