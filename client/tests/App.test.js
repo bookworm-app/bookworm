@@ -34,7 +34,7 @@ import CurrentContainer from '../components/CurrentContainer'
         test('Expect 8 buttons to be rendered upon starting the applications',async()=>{
             const buttons = await screen.findAllByRole('button')
             
-            expect(buttons.length).toEqual(5)
+            expect(buttons.length).toEqual(6)
         })
 
         // test('State changes after componentDidMount runs the fetchall() function', async ()=>{

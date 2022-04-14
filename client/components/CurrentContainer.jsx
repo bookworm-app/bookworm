@@ -82,8 +82,8 @@ class CurrentContainer extends Component {
 
   render () {
       
-    const { current, past, future, otherCurrent, otherPast, otherFuture, addBookFetch } = this.props;
-    const { hidden } = this.state;
+    const { current, past, future, otherCurrent, otherPast, otherFuture, addBookFetch, Loggedin } = this.props;
+    const { hidden} = this.state;
     const currentEntries = [];
 
     if(this.state.submit === true){

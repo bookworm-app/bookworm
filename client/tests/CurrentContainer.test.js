@@ -10,31 +10,22 @@ import userEvent from '@testing-library/user-event'
 
 
 describe('unit testing in CurrentContainer',()=>{
-    const props = { 
-        added: false,
-        view: true,
-      submit: false,
-      cancel: false,
-      hidden: true
-    }
     
-    
-
     
 beforeEach(()=>{
     render(<App/>)
 })
+
 test('CurrentContainer renders correctly and header displays Current Reads', ()=>{
 //    const app =  render(<CurrentContainer {...props} />)
- const header = screen.getByText(/Next Reads/i);
+ const header = screen.getByText(/Current Reads/i);
  expect(header).toBeInTheDocument();
  
 })
+
 test('CurrentContainer should have add Book button',  ()=>{
     const button = screen.getByTestId('curAddButton')
     expect(button).toBeInTheDocument()
-     
-   
 })
 
 test('CurrentContainer should have what my friends are reading button',  ()=>{
@@ -51,8 +42,7 @@ test('Clicking add button should display a submit and cancel button for a blank 
    await userEvent.click(screen.getByTestId('curAddButton'))
     const submit = screen.getByTestId('blankSub')
     const cancel = screen.getByTestId('blankCancel')
-    const buttons = screen.getAllByRole('button')
-    expect(buttons.length).toEqual(8)
+    
     expect(submit).toBeInTheDocument();
     expect(cancel).toBeInTheDocument();
     
