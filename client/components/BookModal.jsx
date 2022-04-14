@@ -11,10 +11,12 @@ const publisher = props.apiBookInfo?.[2];
 const date = props.apiBookInfo?.[3];
 const description = props.apiBookInfo?.[4];
 const genre = props.apiBookInfo?.[9][0];
+const photo = props.apiBookInfo?.[16].thumbnail;
 
   return (
     <div className="bookmodal" id="bookmodal">
       <h2>{title}</h2>
+      <img src={photo}></img>
       <ul>
         <p><strong>Author: </strong>{author}</p>
         <p><strong>Genre:</strong> {genre}</p>

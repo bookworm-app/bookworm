@@ -5,7 +5,7 @@ const BookCard = props =>{
 // ---------------STATE FOR BOOK COMPONENT-----------------------------
 const { title, status, userid, bookID} = props.books;
 let { type } = props;
-console.log(status);
+
 
 
 //------------UPDATE READ STATUS FROM PRESENT TO PAST------------------
