@@ -2,7 +2,7 @@ const request = require('supertest');
 const server = 'http://localhost:3000';
 
 //remove sth from the working code so the test fails
-const id = 46; //can try w other id's
+const id = 3; //can try w other id's
 describe('Reviews route integration', () => {
     describe('/reviews', () => {
         describe('GET', () => {

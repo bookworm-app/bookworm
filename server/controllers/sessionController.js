@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const path = require('path');
 const ENV = require('dotenv').config({ path: path.resolve(__dirname, '../.env')});
 const db = require('../models/bookModels.js');
