@@ -6,39 +6,38 @@ import '../styles.scss';
 
 const Button = props => {
   const [apiBookInfo, setapiBookInfo] = useState(null);
-  const { bookid } = props;
+  const { bookID } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   
   const setModalIsOpenToTrue =()=>{
-      setModalIsOpen(true)
+      
+// ----------GET REQUEST FOR API BOOK INFO-------------------------
+   
+     fetch(`/books/modal/${bookID}`, {
+      method: 'GET'
+    })
+      .then(res => res.json()) 
+      .then(res => {
+        const result = Object.values(res);
+        setapiBookInfo(result)
+      })
+      .then(setModalIsOpen(true))
+      .catch(err=>{console.log(err)});
+      
+  };
 
-  // ---GET REQUEST FOR API BOOK INFO
-      // useEffect(()=>{
-      //   fetch(`/books/modal/${bookID}`, {
-      //     method: 'GET'
-      //   })
-      //     .then(res => res.json()) 
-      //     .then(res => {
-      //       const apiBookInfo = Object.values(res);
-      //       setapiBookInfo(apiBookInfo)
-      //       console.log(apiBookInfo[0])
-      //     })
-          
-      //     .catch(err=>{console.log(err)})
-      // },[])
-
-  }
   const setModalIsOpenToFalse = ()=>{
     setModalIsOpen(false)
   }
+
+//-----------Modal window opens and closes on button clicks---------------
 
   return  (
     <div>
       <button type="info" className="info" id="infoBtn" onClick={setModalIsOpenToTrue}>MORE INFO</button>  
       <Modal isOpen={modalIsOpen} id="modal">
         <button onClick={setModalIsOpenToFalse}>X</button>
-        {/* {apiBookInfo && apiBookInfo.map(books => <BookModal key={"book"+ books.readinglistid} bookInfo={bookInfo}/>)} */}
-        <BookModal bookinfo={props.books}/>
+        <BookModal bookinfo={props.props.books} apiBookInfo={apiBookInfo}/>
       </Modal>
     </div>
   );
