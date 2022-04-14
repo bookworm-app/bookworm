@@ -2,13 +2,43 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Bookworm 2.0</title>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="976047376765-06alm0ga8c4s75vlci7s15hh87lmbe2a.apps.googleusercontent.com">
+  <title>Bookworm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+<!--   
+  <div class="g-signin2" data-onsuccess="console.log('poopy')"></div> -->
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  
   <div id="root"></div>
-  <script src="build/bundle.js"></script>
+ 
+
+  <script> 
+  function onSignIn(googleUser) 
+   {
+  //   var profile = googleUser.getBasicProfile();
+  // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  // console.log('Name: ' + profile.getName());
+  // console.log('Image URL: ' + profile.getImageUrl());
+  // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+    let id_token = googleUser.getAuthResponse().id_token;
+    
+    let xhm = new XMLHttpRequest();
+    xhm.open('POST', '/login');
+    xhm.setRequestHeader('Content-Type', 'application/json');
+    xhm.onload = function() {
+      console.log('Signed in as: ' + xhm.responseText);
+      if(xhm.responseText == 'success'){
+        location.assign()
+      }
+      };
+      xhm.send(JSON.stringify({token : id_token}));
+  }
+  </script>
 </body>
 </html>

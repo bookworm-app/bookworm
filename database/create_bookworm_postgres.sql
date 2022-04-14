@@ -11,10 +11,10 @@ SET row_security = off;
 
 CREATE TABLE public.users (
 	"_id" serial NOT NULL,
-	"username" varchar(255) NOT NULL UNIQUE,
-	"password" varchar(255) NOT NULL,
-	"first_name" varchar(255) NOT NULL,
-	"last_name" varchar(255) NOT NULL,
+	"username" varchar NOT NULL UNIQUE,
+	"password" varchar NOT NULL,
+	"first_name" varchar NOT NULL,
+	"last_name" varchar NOT NULL,
 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -38,9 +38,10 @@ CREATE TABLE public.reading_lists (
 
 CREATE TABLE public.books (
 	"_id" serial NOT NULL,
-	"title" varchar(255) NOT NULL,
-	"author" varchar(255) NOT NULL,
+	"title" varchar NOT NULL,
+	"author" varchar NOT NULL,
 	"genre_id" serial,
+	"bookID" varchar,
 	CONSTRAINT "books_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -50,7 +51,7 @@ CREATE TABLE public.books (
 
 CREATE TABLE public.read_statuses (
 	"_id" serial NOT NULL,
-	"status" varchar(255) NOT NULL,
+	"status" varchar NOT NULL,
 	CONSTRAINT "read_statuses_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -60,7 +61,7 @@ CREATE TABLE public.read_statuses (
 
 CREATE TABLE public.genres (
 	"_id" serial NOT NULL,
-	"genre" varchar(255),
+	"genre" varchar,
 	CONSTRAINT "genres_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -103,17 +104,17 @@ INSERT INTO public.genres VALUES (11, 'Non-Fiction');
 INSERT INTO public.genres VALUES (12, 'Children');
 INSERT INTO public.genres VALUES (13, 'Other');
 
-INSERT INTO public.books VALUES(1, 'East of Eden', 'John Steinbeck', 1);
-INSERT INTO public.books VALUES(2, 'Dune', 'Frank Herbert', 4);
-INSERT INTO public.books VALUES(3, 'Midnight in Chernobyl', 'Adam Higgenbotham', 11);
-INSERT INTO public.books VALUES(4, 'The Metamorphasis', 'Franz Kafka', 1);
-INSERT INTO public.books VALUES(5, 'Harry Potter and the Deathly Hallows', 'JK Rowling', 4);
-INSERT INTO public.books VALUES(6, 'Harry Potter and the Half Blood Prince', 'JK Rowling', 4);
-INSERT INTO public.books VALUES(7, 'The Hunger Games', 'Suzanne Collins', 4);
-INSERT INTO public.books VALUES(8, 'Little Women', 'Louisa May Alcott', 1);
-INSERT INTO public.books VALUES(9, 'No Country for Old Men', 'Cormac McCarthy', 8);
-INSERT INTO public.books VALUES(10, 'Crime and Punishment', 'Fyodor Dostoevsky', 1);
-INSERT INTO public.books VALUES(11, 'The Very Hungry Caterpillar', 'Eric Carle', 12);
+INSERT INTO public.books VALUES(1, 'East of Eden', 'John Steinbeck', 1, '9781440631320');
+INSERT INTO public.books VALUES(2, 'Dune', 'Frank Herbert', 4, '9780441013593' );
+INSERT INTO public.books VALUES(3, 'Midnight in Chernobyl', 'Adam Higgenbotham', 11, '9781501134630');
+INSERT INTO public.books VALUES(4, 'The Metamorphasis', 'Franz Kafka', 1, '9780393523140' );
+INSERT INTO public.books VALUES(5, 'Harry Potter and the Deathly Hallows', 'JK Rowling', 4, '9781781102435');
+INSERT INTO public.books VALUES(6, 'Harry Potter and the Half Blood Prince', 'JK Rowling', 4,'9780439784542' );
+INSERT INTO public.books VALUES(7, 'The Hunger Games', 'Suzanne Collins', 4,'9781407133171' );
+INSERT INTO public.books VALUES(8, 'Little Women', 'Louisa May Alcott', 1,'9780147509048' );
+INSERT INTO public.books VALUES(9, 'No Country for Old Men', 'Cormac McCarthy', 8, '9780307390530' );
+INSERT INTO public.books VALUES(10, 'Crime and Punishment', 'Fyodor Dostoevsky', 1, '9780486415871');
+INSERT INTO public.books VALUES(11, 'The Very Hungry Caterpillar', 'Eric Carle', 12, '9781452131900' );
 
 INSERT INTO public.reading_lists VALUES(1, 1, 5, 1, TRUE, 'Amazing Book!');
 INSERT INTO public.reading_lists VALUES(2, 1, 6, 1, TRUE, 'Blew my Mind!');
