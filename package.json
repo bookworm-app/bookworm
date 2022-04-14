@@ -27,7 +27,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.50.0",
-    "sass-loader": "^12.6.0"
+    "sass-loader": "^12.6.0",
+    "sequelize": "^6.19.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
