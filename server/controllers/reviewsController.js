@@ -56,6 +56,7 @@ reviewsController.getReviews = (req, res, next) => {
     .then(dbResponse => {
       res.locals.reviews = dbResponse.rows;
       // console.log(res.locals.reviews); //dbResonse.rows = array w objects. Each obj = entry w username, title, author, genre, status, etc.
+      console.log(res.body);
       return next();
     })
     .catch((err) => {
