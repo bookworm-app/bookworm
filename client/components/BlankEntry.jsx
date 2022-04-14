@@ -83,15 +83,16 @@ function BlankEntry(props) {
       label: 'Other',
     },
   ];
+  console.log(props);
 
-  const saveBook = () => {
+  const saveBook = (e) => {
     // if (title === '') setTitleError('required');
     // if (author === '') setAuthorError('required');
     // if (genre === 0) setAuthorError('choose a genre');
     // args: userId=1, title from state, author from state, genre is not needed
     // genreId gets genre from state, status is not needed, statusId=2 for 'present'
     props.addBookFetch(1, title, author, undefined, genre, undefined, 2);
-    props.handleCancel();
+    props.handleCancel(e);
   }
   
   return(
@@ -105,6 +106,7 @@ function BlankEntry(props) {
     >
       <div>
       <TextField
+          data-testid='title'
           color= "secondary"
           label="Title"
           id="addCurrentTitle"
@@ -116,6 +118,7 @@ function BlankEntry(props) {
           }}
         />
         <TextField
+        data-testid='author'
         color= "secondary"
           label="Author"
           id="addCurrentTitle"
@@ -127,6 +130,7 @@ function BlankEntry(props) {
           }}
         />
         <TextField
+        data-testid='genreDropdown'
         color= "secondary"
           id="outlined-select-currency"
           select
@@ -142,8 +146,8 @@ function BlankEntry(props) {
             </MenuItem>
           ))}
         </TextField>
-        <Button className= "buttons" size="small" color="secondary" variant="contained" onClick={saveBook} >Submit</Button>
-        <Button className= "buttons" size="small" color="secondary" variant="outlined" onClick={props.handleCancel} >Cancel</Button>
+        <Button data-testid="blankSub" className= "buttons" size="small" color="secondary" variant="contained" onClick={(event)=>saveBook(event)} >Submit</Button>
+        <Button data-testid="blankCancel" className= "buttons" size="small" color="secondary" variant="outlined" onClick={props.handleCancel} >Cancel</Button>
       </div>
       
     </Box>

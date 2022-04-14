@@ -1,7 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 h1 {
   text-align: center;
 }
-
+.signup {
+  text-align: center;
+  display: flex;
+  gap:10px;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: end;
+}
+.signButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+}
+.signButton button {
+  color: #9123A7;
+  background: #fff;
+  margin: 0 5px;
+}
+.signButton button:hover {
+  color: #fff;
+}
+.appContainer{
+  border: solid rgb(65, 58, 58);
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px grey
+}
 body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -14,6 +43,7 @@ body {
 }
 .pastContainer{
   text-align: center;
+  margin-bottom: 2%;
 }
 
 .buttons {
@@ -23,7 +53,7 @@ body {
 }
 
 #theDiv {
-  
+
   justify-content:space-around;
   display: flex;
   flex-direction: row;
@@ -32,10 +62,19 @@ body {
 button {
   margin-bottom: 10px;
 }
-// this isnt working. Trying to add space below the buttons //on it
 
-// #currentCon {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: space-between;
-// }
+.splashPage {
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url(http://cs.sixtrillion.com/books3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.splashPage a {
+  color: #fff;
+}

@@ -22,6 +22,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator']
           }
         }
       },
@@ -32,6 +33,8 @@ module.exports = {
     ],
   },
   devServer: {
+    host:'localhost',
+    port:8080,
     static: {
       publicPath: 'build',
       directory: path.resolve(__dirname, 'build')
@@ -39,9 +42,7 @@ module.exports = {
     proxy: {
       '/': 'http://localhost:3000'
     },
-    historyApiFallback: {
-      index: '/'
-    },
+    historyApiFallback: true
   },
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
