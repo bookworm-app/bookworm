@@ -3,8 +3,9 @@ import CurrentContainer from './CurrentContainer';
 import FutureContainer from './FutureContainer';
 import PastContainer from './PastContainer';
 import sampleState from './sampleState';
-import { createTheme } from '@mui/material/styles';
+import { createTheme} from '@mui/material/styles';
 import {Routes, Route} from 'react-router-dom'
+import Button from '@mui/material/Button'
 
 // //more imports?
 const theme = createTheme({
@@ -172,6 +173,7 @@ addBookFetch(userid, title, author, genre, genreid, status, statusid, recommend,
         // <div className="mainContainer">
       <div className= "divInMain">
         <h1>BOOKWORM</h1>
+        {/* <Button className= "buttons" size="small" color="secondary" variant="contained">Logout</Button> */}
         <div className= "currentFutureDiv" id= "theDiv">
           <CurrentContainer current={current} otherCurrent={otherCurrent} addBookFetch={this.addBookFetch} />
           <FutureContainer future= {future} otherFuture={otherFuture} addBookFetch={this.addBookFetch}/>

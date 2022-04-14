@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+
 const PORT = 3000;
 
 app.use(express.json());
@@ -9,6 +10,7 @@ app.use(express.json());
 // require routers
 const booksRouter = require(path.join(__dirname,'./routes/books'));
 const reviewsRouter = require(path.join(__dirname,'./routes/reviews'));
+const authRouter = require('./routes/authRouter')
 
 // app entry for production
 if(process.env.NODE_ENV === 'production'){
@@ -22,6 +24,7 @@ if(process.env.NODE_ENV === 'production'){
 // use routers
 app.use('/books', booksRouter);
 app.use('/reviews', reviewsRouter);
+// app.use('/auth',authRouter);
 
 // 404 handler
 app.use('*', (req, res) => {
