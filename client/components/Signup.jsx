@@ -4,23 +4,68 @@ import Button from '@mui/material/Button'
 
 const Signup = () => {
     const [Signedup, setSignedUpState] = useState(false);
-    let navigate = useNavigate();
+    const [message, setMessage] = useState('')
+    const [username, changeUsername] = useState('');
+    const [password, changePassword] = useState('');
+    const [email, changeEmail] = useState('');
+    const navigate =  useNavigate()
     const routeChange = () => {
-        let path=`/`
+        let path = '/'
+        if(Signedup){
+            path='/home'
+        } 
+        
         navigate(path);
     }
     
     //write logic to check if signup is sucessful. if so, set state to true, and navigate to home page
+    const Signup = async () => {
+        
+        console.log('sending signup request')
+        if(username === ''){setMessage('Please provide a username')} 
+        else if(password === ''){setMessage('Please provide a password')}
+        else if (email === ''){setMessage('Please provide an email')}
+        if(username !=='' && password !== ''){
+
+        const reqBody = {
+            method: 'POST',
+            header:{
+                'Content-Type': 'Application/JSON'
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password,
+                email: email
+            })
+        }
+        //req body with username and password
+        try{
+        const response = await fetch('/signup',reqBody)
+        if (response.status === 200){
+            setSignedUpState(true);
+            setMessage('Successfully signed up!')
+
+        } else {
+            setMessage('sign up failed')
+        }
+    }
+    catch (err){
+        console.log(err);
+        setMessage('sign up failed')
+    }
+    }
+    }
     
     return (
     <div>
     <h1>Signup</h1>
     <form className = "signup">
 
-    <div><label>Username:</label> <input type="text"></input></div>
-    <div><label>Password:</label> <input type="text"></input></div>
-    <div><label>Email:   </label><input type="text"></input></div>
-       <div className = "signButton"> <Button className= "buttons" size="small" color="secondary" variant="contained">Submit</Button><Button className= "buttons" size="small" color="secondary" variant="contained" onClick={routeChange}>Back</Button></div>
+    <div><label>Username:</label> <input onChange={changeUsername} type="text"></input></div>
+    <div><label>Password:</label> <input onChange={changePassword} type="text"></input></div>
+    <div><label>Email:   </label><input onChange={changeEmail}type="text"></input></div>
+    <label>{message}</label>
+       <div className = "signButton"> <Button onClick = {Signup} className= "buttons" size="small" color="secondary" variant="contained">Submit</Button><Button className= "buttons" size="small" color="secondary" variant="contained" onClick={routeChange}>Back</Button></div>
     </form>
     </div>
     //create an input form with a username and password 
