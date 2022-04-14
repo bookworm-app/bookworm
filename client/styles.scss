@@ -1,41 +1,157 @@
 h1 {
   text-align: center;
+  font-weight: 400;
+}
+h2 {
+  font-weight: 400;
+  text-align: center;
+}
+h3{
+  font-weight: 400;
+  text-align: center; 
 }
 
 body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
 }
 
-.currentContainer{
-  text-align: center;
-}
-.futureContainer{
-  text-align: center;
-}
-.pastContainer{
-  text-align: center;
+
+//-------------------------TOP MENU COMPONENT----------------------------
+
+.menu {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 10px;
+  color: rgb(39, 39, 39);
+  letter-spacing: 0.07em;
+  position: fixed;
+  width: 100%;
+  border-bottom: 2px solid #343434;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
+//-----------------------------MAIN COMPONENT-------------------------
+
+#mainHeader {
+  padding-top: 130px;
 }
 
-#theDiv {
+#main{
+  padding-top: 30px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future"
+                      "past current future";
+}
+
+//--------------------------BOOKCARD COMPONENT----------------------
+
+#bookcard {
   
-  justify-content:space-around;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
+  margin: 30px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 5%;
+  width: 70%;
+}
+#bookcard:hover {
+  border:1px solid #b7b7b7;
 }
 
-button {
-  margin-bottom: 10px;
+#presentBookCard {
+  grid-area: current;
 }
-// this isnt working. Trying to add space below the buttons //on it
+#pastBookCard {
+  align-items: center;
+  grid-area: past;
+}
+#futureBookCard{
+  align-items: center;
+  grid-area: future;
+}
 
-// #currentCon {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: space-between;
-// }
+//--------------------------MODAL COMPONENT-----------------------
+
+
+
+#modal {
+ height: 400px;
+ width: 40%;
+}
+
+#bookmodal {
+  text-align: center;
+  align-items: center;
+}
+
+
+
+//-------------------------BUTTONS------------------------------
+
+#addBtn{
+  background-color: #b728b9;
+  color:  rgb(255, 255, 255);
+  padding: 7px;
+  border-radius: 5%;
+  border: 1px solid black;
+  margin-left: 33%;
+}
+#addBtn:hover{
+  background-color: rgb(255, 255, 255);
+  color:#8a8a8a;
+}
+
+#doneBtn{
+  background-color: #b728b9;
+  color:  rgb(255, 255, 255);
+  padding: 7px;
+  border-radius: 5%;
+  border: 1px solid black;
+  margin: 5px;
+}
+#doneBtn:hover{
+  background-color: rgb(255, 255, 255);
+  color:#8a8a8a;
+}
+
+#infoBtn{
+  background-color: #b728b9;
+  color:  rgb(255, 255, 255);
+  padding: 7px;
+  border-radius: 5%;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+#infoBtn:hover{
+  background-color: rgb(255, 255, 255);
+  color:#8a8a8a;
+}
+
+//---------------------FOOTER COMPONENT----------------------
+
+
+.footer {
+  background-color: #ffffff;
+  padding: 10px;
+  color: rgb(39, 39, 39);
+  letter-spacing: 0.07em;
+  width: 100%;
+  text-align: center;
+  border-top: 2px solid black;
+}
+
+
+
+
+//ADD MEDIA QUERIES HERE
