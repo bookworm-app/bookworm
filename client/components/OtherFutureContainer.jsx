@@ -6,27 +6,27 @@ import PastEntry from './PastEntry';
 //         super(props)
 //     }
 // }
-const OtherPastContainer = ({ otherPast }) => {
-    const otherPastElements = [];
+const OtherFutureContainer = ({ otherFuture }) => {
+    const otherFutureElements = [];
 
     // iterate through up to past current entries from other users
-    for(let i = 0; i < otherPast.length; i++) {
-        otherPastElements.push(
+    for(let i = 0; i < otherFuture.length; i++) {
+        otherFutureElements.push(
             <PastEntry
-                title={otherPast[i].title}
-                author={otherPast[i].author}
-                genre={otherPast[i].genre}
-                recommend={otherPast[i].recommend}
-                review={otherPast[i].review}
+                title={otherFuture[i].title}
+                author={otherFuture[i].author}
+                genre={otherFuture[i].genre}
+                recommend={otherFuture[i].recommend}
+                review={otherFuture[i].review}
             />
         )
     }
 
     return(
-        <div className ='otherPastContainer'>
-            {otherPastElements}
+        <div className ='otherFutureContainer'>
+            {otherFutureElements}
         </div>
     );
 };
 
-export default OtherPastContainer;
+export default OtherFutureContainer;

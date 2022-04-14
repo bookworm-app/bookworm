@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FutureEntry from './FutureEntry';
 import BlankEntry from './BlankEntry';
 import Button from '@mui/material/Button';
+import OtherFutureContainer from './OtherFutureContainer'
 //import OtherCurrentContainer from './OtherCurrentContainer';
 
 // //more imports?
@@ -20,7 +21,7 @@ class FutureContainer extends Component {
     }
     //bind functions
     this.addBook = this.addBook.bind(this);
-    // this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
+    this.viewOtherFuture = this.viewOtherFuture.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
@@ -56,10 +57,10 @@ class FutureContainer extends Component {
     // }
   }
 
-  // viewOtherCurrent(){
-  //   if(this.state.hidden === true) this.setState({ hidden: false });
-  //   else this.setState({ hidden: true });
-  // }
+  viewOtherFuture(){
+    if(this.state.hidden === true) this.setState({ hidden: false });
+    else this.setState({ hidden: true });
+  }
 
 //   // deleteEntry();
 //   // //this is a function that deletes the entry from the current reads section, also removing it from the DB
@@ -114,7 +115,7 @@ class FutureContainer extends Component {
 //     // togging visibility style property of OtherCurrentContainer based on view boolean from local state
 //     // let otherCurrentView = { visibility: 'hidden' };
 //     // this.state.hidden ? otherCurrentView : otherCurrentView = { visibility: 'hidden' };
-    
+    const {hidden} = this.state
     return (
         <div className="futureContainer">
           {/* { this.props.current} */}
@@ -124,16 +125,16 @@ class FutureContainer extends Component {
           <Button onClick= {this.addBook} className='addBooksButton' id= 'addButton' size="small" color="secondary" variant="contained">Add Book</Button>
           {/* <BlankEntry /> */}
           { futureEntries }
-           {/* <div>
-              // <Button onClick={this.viewOtherCurrent} data-testid='curFriendButton' id='viewOtherCurrent' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
+           <div>
+               <Button onClick={this.viewOtherFuture} data-testid='FutureButton' id='viewOtherFuture' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
              {/* <label>What My Friends Are Reading</label> */}
-           {/* </div > */}
-           {/* <div style={{ display: hidden ? "none" : "contents" }}>
-             <OtherCurrentContainer 
-                otherCurrent={this.props.otherCurrent} s
+           </div >
+           <div style={{ display: hidden ? "none" : "contents" }}>
+             <OtherFutureContainer 
+                otherFuture={this.props.otherFuture} 
             />
             
-          </div> */}
+          </div>
           {/* //<h1>hey</h1> */} 
         </div>
     )
