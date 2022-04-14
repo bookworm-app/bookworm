@@ -13,7 +13,7 @@ const Home = () => {
     {/* <Navbar/> */}
     <h1>Welcome to Bookworm!</h1>
     <Routes>
-        <Route path='/home' element={<App/>}></Route>
+        <Route path='/' element={<App/>}></Route>
         <Route path='/login' element = {<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
     </Routes>

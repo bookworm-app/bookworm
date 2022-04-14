@@ -95,7 +95,7 @@ class FutureContainer extends Component {
     // this.state.cancel === false
     if(this.state.added === true) {
       futureEntries.push(
-        <BlankEntry handleCancel={this.handleCancel} handleSubmit= {this.handleSubmit} AddBookFetch = {this.props.addBookFetch}/>
+        <BlankEntry handleCancel={this.handleCancel} handleSubmit= {this.handleSubmit} addBookFetch = {this.props.addBookFetch}/>
       ) 
     }
     // handleSubmit= { this.handleSubmit } handleCancel= { this.handleCancel }

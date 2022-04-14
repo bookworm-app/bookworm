@@ -83,6 +83,7 @@ function BlankEntry(props) {
       label: 'Other',
     },
   ];
+  console.log(props);
 
   const saveBook = (e) => {
     // if (title === '') setTitleError('required');
