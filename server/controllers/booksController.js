@@ -32,6 +32,7 @@ booksController.getBooks = (req, res, next) => {
 }
 
 booksController.addBook = (req, res, next) => {
+    console.log("inside add book");
     const userId = req.params.id;
     const {title} = req.body;
     const {author} = req.body;

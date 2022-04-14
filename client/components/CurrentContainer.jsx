@@ -106,6 +106,8 @@ class CurrentContainer extends Component {
         title= {this.props.current[i].title}
         author= {this.props.current[i].author}
         genre= {this.props.current[i].genre}
+        
+        
         />
       )
     }
@@ -123,11 +125,12 @@ class CurrentContainer extends Component {
           {/* <button onClick= {this.addBook} id= 'addButton'>Add Book</button> */}
           <h2>CURRENT READS</h2>
           {"\n"}
-          <Button onClick= {this.addBook} className='addBooksButton' id= 'addButton' size="small" color="secondary" variant="contained">Add Book</Button>
+          
+          <Button onClick= {this.addBook} data-testid = 'curAddButton' className='addBooksButton' id= 'addButton' size="small" color="secondary" variant="contained">Add Book</Button>
           {/* <BlankEntry /> */}
           { currentEntries }
            <div>
-             <Button onClick={this.viewOtherCurrent} id='viewOtherCurrent' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
+             <Button onClick={this.viewOtherCurrent} data-testid='curFriendButton' id='viewOtherCurrent' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
              {/* <label>What My Friends Are Reading</label> */}
            </div >
            <div style={{ display: hidden ? "none" : "contents" }}>
