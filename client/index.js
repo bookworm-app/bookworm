@@ -7,18 +7,16 @@ import Home from './components/Home'
 import App from './components/App';
 
 // eslint-disable-next-line no-unused-vars
-import styles from './styles.scss'; 
+import styles from './styles.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   // <BrowserRouter> // this is a react router thing
-    <div className="appContainer">
       <BrowserRouter>
+    {/* <div className="appContainer"> */}
       <Home/>
+    {/* </div> */}
       </BrowserRouter>
-      {/* <h1>APP WILL GO HERE</h1>
-      <h2>Seriously app will go here</h2> */}
-    </div>
   //  // this is a react router thing
 );

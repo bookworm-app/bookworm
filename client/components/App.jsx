@@ -29,48 +29,18 @@ class App extends Component {
       otherCurrent: [],
       otherPast: [],
       otherFuture: [],
-      
+
     }
     //any function binding happens here
     this.fetchAll = this.fetchAll.bind(this);
     this.addBookFetch = this.addBookFetch.bind(this);
   }
 
-  
+
   componentDidMount() {
     // live data
      this.fetchAll();
   }
-    // const current = [];
-//     const past = [];
-//     const future = [];
-//     const otherCurrent = [];
-//     const otherPast = [];
-//     const otherFuture = [];    
-//     // // iterate through sampleState data
-//     sampleState.forEach(obj => {
-//       if(obj.user_id === 1 && obj.status === 'current') {
-//         current.push(obj);
-//       }
-//       else if(obj.user_id === 1 && obj.status === 'past') {
-//         past.push(obj)
-//         }
-//         else if(obj.user_id === 1 && obj.status === 'future') {
-//           future.push(obj);
-//         }
-//         else if(obj.user_id !== 1 && obj.status === 'current') {
-//           otherCurrent.push(obj);
-//         }
-//         else if(obj.user_id !== 1 && obj.status === 'past') {
-//           otherPast.push(obj);
-//         }
-//         else if(obj.user_id !== 1 && obj.status === 'future') {
-//           otherFuture.push(obj);
-//         }
-//       });
-// //     // re-render using sampleState data
-//     this.setState({ current: current, past: past, future: future, otherCurrent: otherCurrent, otherPast: otherPast, otherFuture: otherFuture});
-//   };
 
   fetchAll() {
     fetch('http://localhost:8080/books/all') //modified to absolute URL
@@ -152,36 +122,35 @@ addBookFetch(userid, title, author, genre, genreid, status, statusid, recommend,
     console.log(`successful addBookFetch request - should get reading list item: ${response}`);
     // fetch request for books/all - that will re-render state
     this.fetchAll();
-  
+
   }).catch(err =>  err);
 };
 
-
-  
 //   // code each container and its components and its logic
-  
+
   render () {
 
     if(this.state.hasError) {
       return <h1>Somthing went wrong with state, hasError</h1>
     };
-    
+
     const { current, past, future, otherCurrent, otherPast, otherFuture } = this.state;
-    
+
     return (
-        // <div className="mainContainer">
-      <div className= "divInMain">
-        <h1>BOOKWORM</h1>
-        <div className= "currentFutureDiv" id= "theDiv">
-          <CurrentContainer current={current} otherCurrent={otherCurrent} addBookFetch={this.addBookFetch} />
-          <FutureContainer future= {future} otherFuture={otherFuture} addBookFetch={this.addBookFetch}/>
+      <div className="appContainer">
+        <div className= "divInMain">
+          <h1>BOOKWORM</h1>
+          <div className= "currentFutureDiv" id= "theDiv">
+            <CurrentContainer current={current} otherCurrent={otherCurrent} addBookFetch={this.addBookFetch} />
+            <FutureContainer future= {future} otherFuture={otherFuture} addBookFetch={this.addBookFetch}/>
+          </div>
+          <div className= "pastDiv">
+            <PastContainer past={past} otherPast={otherPast} addBookFetch={this.addBookFetch} />
+          </div>
         </div>
-        <div className= "pastDiv">
-          <PastContainer past={past} otherPast={otherPast} addBookFetch={this.addBookFetch} />
-        </div>
-      </div>    
+      </div>
     )
   }
 }
-    
+
 export default App;
