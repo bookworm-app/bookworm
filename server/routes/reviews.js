@@ -12,6 +12,8 @@ router.get('/', reviewsController.getReviews, (req, res) => {
 });
 
 router.get('/:id', reviewsController.getReviews, (req, res) => {
+  console.log('inside the router body');
+  console.log(res);
   res.status(200).send(res.locals.reviews);
 });
 
