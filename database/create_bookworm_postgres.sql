@@ -15,6 +15,7 @@ CREATE TABLE public.users (
 	"password" varchar(255) NOT NULL,
 	"first_name" varchar(255) NOT NULL,
 	"last_name" varchar(255) NOT NULL,
+	"email" VARCHAR(255) NOT NULL UNIQUE,
 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
@@ -132,4 +133,4 @@ INSERT INTO public.reading_lists VALUES(14, 5, 8, 3, TRUE, NULL);
 INSERT INTO public.reading_lists VALUES(15, 7, 7, 2, FALSE, NULL);
 INSERT INTO public.reading_lists VALUES(16, 7, 10, 1, TRUE, 'I LOVED this book!');
 
--- postgres://dkkcsyzq:kmL7sCZe-lVTlpTeLLWeGMTfmUQK8ejp@batyr.db.elephantsql.com/dkkcsyzq
+-- postgres://epcwessc:Jmdq41arBVqEHZL_VhtSADqpwHwGAt6Q@rajje.db.elephantsql.com/epcwessc
