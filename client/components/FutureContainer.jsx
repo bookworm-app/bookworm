@@ -20,7 +20,7 @@ class FutureContainer extends Component {
     }
     //bind functions
     this.addBook = this.addBook.bind(this);
-    //this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
+    // this.viewOtherCurrent = this.viewOtherCurrent.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
@@ -125,16 +125,16 @@ class FutureContainer extends Component {
           {/* <BlankEntry /> */}
           { futureEntries }
            {/* <div>
-             <button onClick={this.viewOtherCurrent} id='viewOtherCurrent' > + </button>
-             <label>What My Friends Are Reading</label>
-           </div > */}
-           {/* <div style={{ visibility: hidden ? "hidden" : "visible" }}>
+              // <Button onClick={this.viewOtherCurrent} data-testid='curFriendButton' id='viewOtherCurrent' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
+             {/* <label>What My Friends Are Reading</label> */}
+           {/* </div > */}
+           {/* <div style={{ display: hidden ? "none" : "contents" }}>
              <OtherCurrentContainer 
                 otherCurrent={this.props.otherCurrent} s
             />
             
           </div> */}
-          {/* //<h1>hey</h1> */}
+          {/* //<h1>hey</h1> */} 
         </div>
     )
           

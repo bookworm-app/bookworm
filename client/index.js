@@ -12,7 +12,7 @@ const root = createRoot(container);
 root.render(
   // <BrowserRouter> // this is a react router thing
     <div className="appContainer">
-      <App />
+      <App/>
       {/* <h1>APP WILL GO HERE</h1>
       <h2>Seriously app will go here</h2> */}
     </div>

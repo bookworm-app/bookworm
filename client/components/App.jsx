@@ -71,8 +71,8 @@ class App extends Component {
 //   };
 
   fetchAll() {
-    fetch('http://localhost:3000/books/all') //modified to absolute URL
-    .then(res => res.json())
+    fetch('http://localhost:8080/books/all') //modified to absolute URL
+    .then(res =>   res.json())
     .then(data => {
       // create output arrays
       const current = [];
@@ -84,27 +84,39 @@ class App extends Component {
       // iterate through data
       data.forEach(obj => {
         if(obj.userid === 1 && obj.status === 'present') {
+          //current reads
           current.push(obj);
         }
         else if(obj.userid === 1 && obj.status === 'past') {
+          //past reads
           past.push(obj)
           }
           else if(obj.userid === 1 && obj.status === 'future') {
+            //next reads
             future.push(obj);
           }
           else if(obj.userid !== 1 && obj.status === 'present') {
+            //what my friends are reading
             otherCurrent.push(obj);
           }
           else if(obj.userid !== 1 && obj.status === 'past') {
+            //what my friends have read
             otherPast.push(obj);
           }
           else if(obj.userid !== 1 && obj.status === 'future') {
+            //friends next read - not rendered on page
             otherFuture.push(obj);
           }
         });
         // do we need to return this.setState
+        // console.log('current', current)
+        // console.log(past)
+        // console.log(future)
+        // console.log(otherCurrent)
+        // console.log(otherPast)
+        // console.log(otherFuture);
         this.setState({ current: current, past: past, future: future, otherCurrent: otherCurrent, otherPast: otherPast, otherFuture: otherFuture});
-      }).catch(err => console.log('Problem with fetchAll method: ERROR:', err));
+      }).catch(err =>  err);
 
 };
 
@@ -123,7 +135,7 @@ addBookFetch(userid, title, author, genre, genreid, status, statusid, recommend,
   }
   console.log(`-----> after requestBody declared, ${requestBody}`);
   console.log(`------> userId: ${userid}`);
-  fetch(`books/${userid}`, {
+  fetch(`http://localhost:8080/books/${userid}`, {
       method: 'POST',
       body: JSON.stringify(requestBody),
       headers: {
@@ -137,7 +149,7 @@ addBookFetch(userid, title, author, genre, genreid, status, statusid, recommend,
     // fetch request for books/all - that will re-render state
     this.fetchAll();
   
-  }).catch(err => console.log('Problem with fetchAll method: ERROR:', err));
+  }).catch(err =>  err);
 };
 
 
