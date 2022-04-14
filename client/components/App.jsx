@@ -28,7 +28,8 @@ class App extends Component {
       future: [],
       otherCurrent: [],
       otherPast: [],
-      otherFuture: []
+      otherFuture: [],
+      
     }
     //any function binding happens here
     this.fetchAll = this.fetchAll.bind(this);
@@ -170,11 +171,11 @@ addBookFetch(userid, title, author, genre, genreid, status, statusid, recommend,
       <div className= "divInMain">
         <h1>BOOKWORM</h1>
         <div className= "currentFutureDiv" id= "theDiv">
-          <CurrentContainer current={current} otherCurrent={otherCurrent} addBookFetch={this.addBookFetch}/>
-          <FutureContainer future= {future} otherFuture={otherFuture}/>
+          <CurrentContainer current={current} otherCurrent={otherCurrent} addBookFetch={this.addBookFetch} />
+          <FutureContainer future= {future} otherFuture={otherFuture} addBookFetch={this.addBookFetch}/>
         </div>
         <div className= "pastDiv">
-          <PastContainer past={past} otherPast={otherPast} />
+          <PastContainer past={past} otherPast={otherPast} addBookFetch={this.addBookFetch} />
         </div>
       </div>    
     )

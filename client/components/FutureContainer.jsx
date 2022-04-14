@@ -95,7 +95,7 @@ class FutureContainer extends Component {
     // this.state.cancel === false
     if(this.state.added === true) {
       futureEntries.push(
-        <BlankEntry handleCancel={this.handleCancel} handleSubmit= {this.handleSubmit}/>
+        <BlankEntry handleCancel={this.handleCancel} handleSubmit= {this.handleSubmit} addBookFetch = {this.props.addBookFetch}/>
       ) 
     }
     // handleSubmit= { this.handleSubmit } handleCancel= { this.handleCancel }
@@ -126,7 +126,7 @@ class FutureContainer extends Component {
           {/* <BlankEntry /> */}
           { futureEntries }
            <div>
-               <Button onClick={this.viewOtherFuture} data-testid='FutureButton' id='viewOtherFuture' size="small" color="secondary" variant="contained"> + What My Friends Are Reading</Button>
+               <Button onClick={this.viewOtherFuture} data-testid='FutureButton' id='viewOtherFuture' size="small" color="secondary" variant="contained"> + What My Friends Recommend</Button>
              {/* <label>What My Friends Are Reading</label> */}
            </div >
            <div style={{ display: hidden ? "none" : "contents" }}>
