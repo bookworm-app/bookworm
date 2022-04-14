@@ -9,6 +9,9 @@ const Splash = () => {
             <nav>
             <Link to='/login'>Login</Link> or
             <Link to='/signup'> Signup</Link> to continue!
+            <br />
+            <br />
+            <Link to='/home'>Home</Link>
             </nav>
         </div>
     )

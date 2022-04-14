@@ -3,8 +3,9 @@ import CurrentContainer from './CurrentContainer';
 import FutureContainer from './FutureContainer';
 import PastContainer from './PastContainer';
 import sampleState from './sampleState';
-import { createTheme } from '@mui/material/styles';
+import { createTheme} from '@mui/material/styles';
 import {Routes, Route} from 'react-router-dom'
+import Button from '@mui/material/Button'
 
 // //more imports?
 const theme = createTheme({
@@ -54,9 +55,9 @@ class App extends Component {
       const otherPast = [];
       const otherFuture = [];
       // iterate through data
-      console.log("data:", data);
+
       data.forEach(obj => {
-        console.log("obj",obj);
+
         if(obj.userid === 1 && obj.status === 'present') {
           //current reads
           current.push(obj);

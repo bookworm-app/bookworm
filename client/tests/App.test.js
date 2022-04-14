@@ -25,7 +25,7 @@ import CurrentContainer from '../components/CurrentContainer'
         test('App renders correctly and header displays BOOKWORM', ()=>{
            
             
-         console.log(screen.logTestingPlaygroundURL())
+        //  console.log(screen.logTestingPlaygroundURL())
             const header = app.getByText(/BOOKWORM/);
             
             expect(header).toBeInTheDocument();
