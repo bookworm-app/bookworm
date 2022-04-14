@@ -84,7 +84,9 @@ class App extends Component {
       const otherPast = [];
       const otherFuture = [];
       // iterate through data
+      console.log("data:", data);
       data.forEach(obj => {
+        console.log("obj",obj);
         if(obj.userid === 1 && obj.status === 'present') {
           //current reads
           current.push(obj);
