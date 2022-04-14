@@ -9,7 +9,7 @@ booksController.getBooks = (req, res, next) => {
   const input = [];
   const userId = req.params.id;
   let booksQuery =
-    'SELECT rl._id AS readingListId, u.username, rl.user_id AS userId, b.title, b.author, b.genre_id, g.genre, rs.status, rl.recommend, rl.review \
+    'SELECT rl._id AS readingListId, u.username, rl.user_id AS userId, b.*, g.genre, rs.status, rl.recommend, rl.review \
         FROM ((((reading_lists AS rl\
         RIGHT JOIN users AS u ON rl.user_id = u._id)\
         RIGHT JOIN books AS b ON rl.book_id = b._id)\
@@ -135,9 +135,9 @@ booksController.removeBook = (req, res, next) => {
 
 booksController.getMoreBookData = async (req, res, next) => {
   console.log('---> entering getMoreBookData');
-  console.log('req.params.bookID: ', req.params.bookID);
+  // console.log('req.params.bookID: ', req.params.bookID);
   const { bookID } = req.params;
-  console.log('bookID: ', bookID);
+  // console.log('bookID: ', bookID);
 
   try {
     const response = await fetch(
@@ -149,7 +149,7 @@ booksController.getMoreBookData = async (req, res, next) => {
     // console.log(response);
     const data = await response.json();
     // console.log(data);
-    console.log(data.items[0].volumeInfo);
+    // console.log(data.items[0].volumeInfo);
     res.locals.getMoreBookData = data.items[0].volumeInfo;
     return next();
   } catch (err) {

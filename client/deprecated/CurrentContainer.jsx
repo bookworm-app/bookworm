@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CurrentEntry from './CurrentEntry';
 import BlankEntry from './BlankEntry';
 import Button from '@mui/material/Button';
-import OtherCurrentContainer from './OtherCurrentContainer';
+import OtherCurrentContainer from './otherCurrentContainer';
 
 // //more imports?
 

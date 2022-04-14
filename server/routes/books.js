@@ -2,9 +2,9 @@ const express = require('express');
 const booksController = require('../controllers/booksController');
 const router = express.Router();
 
-router.get('/:id', booksController.getBooks, (req, res) => {
-  res.status(200).json(res.locals.booklist);
-});
+// router.get('/:id', booksController.getBooks, (req, res) => {
+//   res.status(200).json(res.locals.booklist);
+// });
 
 router.get('/all', booksController.getBooks, (req, res) => {
   res.status(200).json(res.locals.booklist);
