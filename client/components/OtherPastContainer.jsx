@@ -1,6 +1,11 @@
 import React from "react";
 import PastEntry from './PastEntry';
 
+// class OtherPastContainer extends Component{
+//     constructor(props){
+//         super(props)
+//     }
+// }
 const OtherPastContainer = ({ otherPast }) => {
     const otherPastElements = [];
 

@@ -1,6 +1,15 @@
 import React from "react";
 import CurrentEntry from './CurrentEntry';
 
+// class OtherCurrentContainer extends Component {
+//    constructor(props){
+//     super(props)
+//    }
+    
+
+
+
+// }
 const OtherCurrentContainer = ({ otherCurrent }) => {
     const otherCurrentElements = [];
 

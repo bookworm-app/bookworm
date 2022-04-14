@@ -1,7 +1,14 @@
+
+
 h1 {
   text-align: center;
 }
 
+.appContainer{
+  border: solid rgb(65, 58, 58);
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px grey
+}
 body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -14,6 +21,7 @@ body {
 }
 .pastContainer{
   text-align: center;
+  margin-bottom: 2%;
 }
 
 .buttons {
